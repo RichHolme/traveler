@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        body {
+            font-family: arial;
+            margin: 0;
+        }
+
+        nav {
+            background: #ff5353;
+            padding: 20px 10px;
+        }
+
+        nav ul {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        nav li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 0 10px 0 0;
+        }
+
+        nav a {
+            color: #fff;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        main,
+        header {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 0 10px;
+            color: #333;
+        }
+
+        main img {
+            width: 40px;
+            margin-right: 10px;
+            position: relative;
+            top: 12px;
+        }
+
+        main p {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <% if (user) { %>
+                <li>
+                    <a href="/auth/logout">Log out</a>
+                </li>
+                <% } else { %>
+                    <li>
+                        <a href="/auth/login">Login</a>
+                    </li>
+                    <% } %>
+                        <li>
+                            <a href="/">Homepage</a>
+                        </li>
+                        <li>
+                            <a href="/profile">Profile</a>
+                        </li>
+        </ul>
+    </nav>
+    <header>
+        <h1>Welcome to your profile,
+            <%= user.username %>
+        </h1>
+        <img src="<%= user.thumbnail %>" />
+        <p>This is your profile thumbnail</p>
+    </header>
+    <main>
+        <p>Information: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse dolorem consectetur error. Ab vero, reiciendis
+            consectetur expedita voluptate aperiam tempore eligendi ducimus ea eos magni saepe corporis. Culpa, ab. Adipisci,
+            illo atque odit architecto quasi quo at ex vero corrupti, rerum aspernatur possimus expedita, aliquam hic harum.
+            Magnam dolore accusantium nihil, quos laborum laboriosam beatae enim reprehenderit, alias sapiente laudantium
+            error, molestias obcaecati omnis quia delectus qui recusandae. Minus, dignissimos. Eos aliquam quisquam quo animi
+            quidem distinctio corrupti quos reprehenderit, commodi ducimus rerum cumque ab nihil! Eligendi autem provident
+            minus libero soluta ullam ipsa deleniti distinctio a magni suscipit doloremque, accusamus, nobis nesciunt laborum
+            beatae deserunt debitis temporibus assumenda aliquid perferendis unde placeat ea? Sit repudiandae nisi nesciunt
+            quaerat quis.</p>
+    </main>
+</body>
+
+</html>
