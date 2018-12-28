@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Navtabs from "./NavtabsHome";
+// import Background from '../images/background.png';
+
 const styles = {
   root: {
-    backgroundImage:
-      "url(https://i.pinimg.com/originals/cc/a5/02/cca5022c86f67861746d7cf2eb486de8.gif)",
+    // backgroundImage: "url(" + Background + ")",
     backgroundSize: "cover",
     overflow: "hidden",
-    height: "750px",
-    marginTop: "-75px",
+    // height: "750px",
+    marginTop: "15%",
     textAlign: "center",
     width: "100%"
   },
@@ -33,7 +34,7 @@ const styles = {
   },
   inspiration: {
     color: "black",
-    marginTop: "200px",
+    // marginTop: "200px",
     marginBottom: "40px",
     fontSize: "40px",
     fontWeight: "bold"
