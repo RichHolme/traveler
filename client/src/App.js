@@ -102,7 +102,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header user={this.state.user} />
+          {/* <Header user={this.state.user} /> */}
           <Route exact path="/" component={Home} />
           <Route exact path="/Home" component={Home} />
           <Route exact path="/Cities/:city" component={Cities} />

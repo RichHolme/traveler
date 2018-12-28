@@ -4,64 +4,52 @@ import Navtabs from "./NavtabsHome";
 // import Background from '../images/background.png';
 
 const styles = {
-  root: {
-    // backgroundImage: "url(" + Background + ")",
-    backgroundSize: "cover",
-    overflow: "hidden",
-    // height: "750px",
-    marginTop: "15%",
-    textAlign: "center",
+  button:{
+    // height: "50px",
+    fontSize: "28px",
+    // width: "250px",
+    // opacity: "15",
+    color: "white",
     width: "100%"
   },
-  button1: {
-    width: "250px",
-    height: "60px",
-    marginRight: "50px",
-    fontSize: "30px",
-    color: "white",
-    opacity: "10"
-  },
-  button2: {
-    height: "60px",
-    fontSize: "30px",
-    width: "250px",
-    opacity: "10",
-    color: "white"
-  },
-  color: {
-    color: "white",
-    textDecoration: "none"
-  },
   inspiration: {
-    color: "black",
-    // marginTop: "200px",
-    marginBottom: "40px",
-    fontSize: "40px",
-    fontWeight: "bold"
+    color: "White",
+    // marginTop: "10%",
+    // marginBottom: "40px",
+    fontSize: "25px",
+    fontWeight: "bold",
+    position: "fixed",
+    top: '0',
+    width: '50%',
+    margin: 'auto',
+    left: "25%",
+    marginTop: '1.5%'
+  },
+  div:{
+    margin: "auto",
+    width: "500px",
+    textAlign: "center"
+  },
+  container:{
+    textAlign: "center"
   }
 };
-
-// Test
 
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div style={styles.container}>
         <Navtabs />
-        <div style={styles.root}>
-          <div style={styles.inspiration}>
-            {" "}
-            Take solo travel to the next level with Travelo.
-          </div>
-          <Link to="/NewUser" style={styles.color}>
-            <button style={styles.button1} className="btn btn-dark">
-              Sign Up
-            </button>{" "}
+        {/* <div style={styles.inspiration}>
+          {" "}
+          Take solo travel to the next level with Travelo
+        </div> */}
+        <div style={styles.div}>
+          <Link to="/NewUser">
+            <button style={styles.button} className="btn btn-dark">Sign Up</button>
           </Link>
-          <Link to="/SignIn" style={styles.color}>
-            <button style={styles.button2} className="btn btn-dark">
-              Sign In
-            </button>
+          <Link to="/SignIn">
+            <button style={styles.button} className="btn btn-dark">Sign In</button>
           </Link>
         </div>
       </div>

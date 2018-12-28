@@ -17,9 +17,10 @@ const Header = props => {
     }
   };
 
-  if (props.user === null) {
-    Greeting = <p>Hello guest</p>;
-  } else if (props.user.name) {
+  // if (props.user === null) {
+  //   Greeting = <p>Hello guest</p>;
+  // } else 
+  if (props.user) {
     Greeting = (
       <p>
         Welcome back, <strong>{props.user.name}</strong>

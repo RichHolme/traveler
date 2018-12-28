@@ -46,6 +46,8 @@ class Trips extends Component {
 
   render() {
     // console.log(this.trip);
+    // $('body').attr()
+    // $('#divID').css("background-image", "url(#)");  
     return (
       <div>
         <Navtabs />

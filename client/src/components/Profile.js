@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import People from "../images/people.gif"
 let userId = localStorage.getItem("userId");
 let username = localStorage.getItem("userName");
 let email = localStorage.getItem("email");
@@ -10,6 +11,7 @@ thumbnail = thumbnail.slice(0, -2);
 thumbnail = thumbnail + "200";
 
 class Profile extends Component {
+  
   state = {
     trips: []
   };
@@ -64,17 +66,19 @@ class Profile extends Component {
       color: "white"
     },
     img: {
-      height: "200px",
-      width: "200px",
-      borderRadius: "50%",
-      float: "left"
+      height: "100%",
+      width: "100%",
+      // borderRadius: "50%",
+      float: "left",
+      // border: "1px solid black"
     },
     container: {
       marginTop: "110px",
       paddingTop: "50px",
       paddingBottom: "50px",
-      paddingLeft: "200px",
-      backgroundColor: "rgba(255, 255, 255, .8)",
+      // paddingLeft: "200px",
+      // backgroundColor: "rgba(255, 255, 255, .9)",
+      backgroundColor: 'white',
       border: "1px black solid",
       borderRadius: "10px"
     },
@@ -112,6 +116,7 @@ class Profile extends Component {
   };
 
   render() {
+    console.log(thumbnail);
     return (
       <div>
         <Navtabs />
@@ -119,7 +124,7 @@ class Profile extends Component {
           <div style={this.styles.container} className="container">
             <div id="row">
               <div className="col-md-4">
-                <img style={this.styles.img} src={thumbnail} />
+                <img style={this.styles.img} src={People} />
               </div>
               <div style={this.styles.text} className="col-md-8">
                 <div>
@@ -135,15 +140,19 @@ class Profile extends Component {
                       return (
                         <a>
                           <Link to="/Trips">
-                            <button style={this.styles.tripBox}>
-                              Trip Name: {trip.tripName}
+                            <button 
+                              className="btn btn-primary"
+                              // style={this.styles.tripBox}
+                            >
+                              {trip.tripName}
                             </button>
                           </Link>
                           <button
-                            style={this.styles.deleteButton}
+                            className="btn btn-danger"
+                            // style={this.styles.deleteButton}
                             onClick={() => this.deleteRows(trip._id)}
                           >
-                            Delete Trip
+                            Remove Trip
                           </button>
                         </a>
                       );

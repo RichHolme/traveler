@@ -143,6 +143,9 @@ class Navtabs extends Component {
             Travelo
           </span>
         </Link>
+        {/* <span style={styles.logo} className="navbar-brand">
+          Take solo travel to the next level with Travelo
+        </span> */}
         <button
           className="navbar-toggler"
           type="button"
