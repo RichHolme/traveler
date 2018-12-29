@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Navtabs from "./Navtabs.js";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import People from "../images/people.gif"
+import People from "../images/people.gif";
+import $ from 'jquery';
 let userId = localStorage.getItem("userId");
 let username = localStorage.getItem("userName");
 let email = localStorage.getItem("email");
@@ -111,6 +112,7 @@ class Profile extends Component {
 
   render() {
     console.log(thumbnail);
+    $('body').css('background-image', 'url(./images/background.png)');
     return (
       <div>
         <Navtabs />

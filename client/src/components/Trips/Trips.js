@@ -11,6 +11,7 @@ import Col from "./col";
 import Restaurant from "./Restaurants";
 import axios from "axios";
 import TripHeader from "./TripHeader";
+import $ from 'jquery';
 let userId = localStorage.getItem("userId");
 let tripId = localStorage.getItem("tripId");
 console.log("tripid ", tripId);
@@ -47,6 +48,7 @@ class Trips extends Component {
   render() {
     // console.log(this.trip);
     // $('body').attr()
+    $('body').css('background-image', 'url(#)');
     // $('#divID').css("background-image", "url(#)");  
     return (
       <div>

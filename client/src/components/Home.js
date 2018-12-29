@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Navtabs from "./NavtabsHome";
+import $ from 'jquery';
 // import Background from '../images/background.png';
 
 const styles = {
@@ -37,6 +38,7 @@ const styles = {
 
 class Home extends Component {
   render() {
+    $('body').css('background-image', 'url(./images/background.png)');
     return (
       <div style={styles.container}>
         <Navtabs />
