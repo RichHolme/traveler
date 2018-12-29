@@ -15,6 +15,7 @@ import Navtabs from "./Navtabs";
 import Sights from "./Sights";
 import Nightlife from "./Nightlife";
 import Weather from "./Weather";
+import city from "../images/city.gif";
 
 class Cities extends Component {
   state = {
@@ -42,23 +43,9 @@ class Cities extends Component {
       boxShadow: "1px 3px 8px 1px #888888",
       borderRadius: "5px"
     },
-    hotelIcon: {
-      position: "absolute",
-      marginTop: "10px",
-      left: 165
-    },
-    cameraIcon: {
-      position: "absolute",
-      marginTop: "10px",
-      left: 150
-    },
-    beerIcon: {
-      position: "absolute",
-      marginTop: "10px",
-      left: 175
-    },
-    city: {
-      backgroundImage: `url(${this.state.cityPic})`
+    icon: {
+      margin: "auto",
+      width: '20%',
     },
     center: {
       textAlign: "center",
@@ -79,8 +66,17 @@ class Cities extends Component {
     },
     h2: {
       textAlign: "center",
-      marginTop: "-30px",
+      marginTop: "5%",
+      marginBottom: "3%",
       marginRight: "-30px"
+    },
+    city: {
+      height: "100px !important", 
+      clear: "both", 
+      // paddingTop: "120px", 
+      // textAlign: "center",
+      width: "100%" ,
+      height: "400px"
     }
   };
 
@@ -223,14 +219,15 @@ class Cities extends Component {
 
   render() {
     return (
-      <div>
+      <div style={this.styles.container}>
         <Navtabs />
-        <CityJumbo city={this.props.match.params.city} />
-        {this.state.weather !== [] ? (
+        {/* <CityJumbo city={this.props.match.params.city} /> */}
+        {/* <img style={this.styles.city} src={city}/> */}
+        {/* {this.state.weather !== [] ? (
           <Weather weather={this.state.weather} />
         ) : (
           ""
-        )}
+        )} */}
         <h2 style={this.styles.h2}> Click a card below to get started! 
           <Link to="/Trips">
             <span style={this.styles.span} className="fa fa-arrow-right" /> 
@@ -249,10 +246,10 @@ class Cities extends Component {
               <p className="card-text text-center">
                 Hotel, Motel, Hostels & Inns
               </p>
-              <i
-                className="fas fa-h-square fa-5x"
-                style={this.styles.hotelIcon}
-              />
+              <div style={this.styles.icon}>
+                <i className="fas fa-h-square fa-5x"/>
+              </div>
+              
             </div>
           </div>
           {/* Sights Card */}
@@ -264,10 +261,9 @@ class Cities extends Component {
             <div className="card-body">
               <h3 className="card-title text-center">Sights & Sounds</h3>
               <p className="card-text text-center">Go Ahead, Be a Tourist</p>
-              <i
-                className="fas fa-camera-retro fa-5x col-lg-12 col-md-12"
-                style={this.styles.cameraIcon}
-              />
+              <div style={this.styles.icon}>
+                <i className="fas fa-camera-retro fa-5x"/>
+              </div>
             </div>
           </div>
 
@@ -280,7 +276,9 @@ class Cities extends Component {
             <div className="card-body">
               <h3 className="card-title text-center">Eat, Drink, Do</h3>
               <p className="card-text text-center">Live It Up Like a Local</p>
-              <i className="fas fa-beer fa-5x" style={this.styles.beerIcon} />
+              <div style={this.styles.icon}>
+                <i className="fas fa-beer fa-5x"/>
+              </div>
             </div>
           </div>
         </div>

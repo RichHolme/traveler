@@ -39,14 +39,11 @@ const styles = {
 
 class Home extends Component {
   render() {
+    $('html').css('background-image', 'url(./images/background.png)');
     $('body').css('background-image', 'url(./images/background.png)');
     return (
       <div style={styles.container}>
         <Navtabs />
-        {/* <div style={styles.inspiration}>
-          {" "}
-          Take solo travel to the next level with Travelo
-        </div> */}
         <div style={styles.div}>
           <Link to="/NewUser">
             <button style={styles.button} className="btn btn-dark">Sign Up</button>

@@ -112,6 +112,7 @@ class Profile extends Component {
 
   render() {
     console.log(thumbnail);
+    $('html').css('background-image', 'url(./images/background.png)');
     $('body').css('background-image', 'url(./images/background.png)');
     return (
       <div>
