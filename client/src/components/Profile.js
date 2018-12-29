@@ -50,20 +50,14 @@ class Profile extends Component {
       backgroundSize: "cover",
       overflow: "hidden",
       height: "auto",
-      marginTop: "-75px",
-      textAlign: "center",
       width: "100%",
       fontSize: "20px"
     },
     text: {
       textAlign: "left",
       fontSize: "30px",
-      lineHeight: "65px"
-    },
-    textSize: {
-      fontSize: "20px",
-      opacity: "10",
-      color: "white"
+      lineHeight: "65px",
+      paddingLeft: '5%'
     },
     img: {
       height: "100%",
@@ -73,13 +67,13 @@ class Profile extends Component {
       // border: "1px solid black"
     },
     container: {
-      marginTop: "110px",
+      marginTop: "5%",
       paddingTop: "50px",
       paddingBottom: "50px",
       // paddingLeft: "200px",
       // backgroundColor: "rgba(255, 255, 255, .9)",
-      backgroundColor: 'white',
-      border: "1px black solid",
+      backgroundColor: '#fbfbfb',
+      // border: "1px black solid",
       borderRadius: "10px"
     },
     span: {
@@ -123,38 +117,44 @@ class Profile extends Component {
         <div style={this.styles.body}>
           <div style={this.styles.container} className="container">
             <div id="row">
-              <div className="col-md-4">
+              <div className="col-md-5">
                 <img style={this.styles.img} src={People} />
               </div>
-              <div style={this.styles.text} className="col-md-8">
+              <div style={this.styles.text} className="col-md-7">
+                <div style={this.styles.text}>
+                  <span className="fa fa-user" style={this.styles.span}></span> {username}
+                </div>
+                <div style={this.styles.text}>
+                  <span className="fa fa-envelope" style={this.styles.span}></span> {email}
+                </div>
                 <div>
-                  <span style={this.styles.span}>User:</span> {username}
-                </div>
-                <div style={this.styles.text}>
-                  <span style={this.styles.span}>Email:</span> {email}
-                </div>
-                <div style={this.styles.text}>
-                  <span>Your Trips:</span>
+                  <div style={this.styles.text}>
+                    <span style={this.styles.span}>Your Trips:</span>
+                  </div>
                   <ul style={this.styles.ul}>
                     {this.state.trips.map((trip, idx) => {
                       return (
-                        <a>
-                          <Link to="/Trips">
-                            <button 
-                              className="btn btn-primary"
-                              // style={this.styles.tripBox}
+                        <div className="row">
+                          <div className="col-md-9">
+                            <Link to="/Trips">
+                              <button 
+                                className="btn btn-primary"
+                                // style={this.styles.tripBox}
+                              >
+                                {trip.tripName}
+                              </button>
+                            </Link>
+                          </div>
+                          <div className="col-md-3">
+                            <button
+                              className="btn btn-danger"
+                              // style={this.styles.deleteButton}
+                              onClick={() => this.deleteRows(trip._id)}
                             >
-                              {trip.tripName}
+                              Remove Trip
                             </button>
-                          </Link>
-                          <button
-                            className="btn btn-danger"
-                            // style={this.styles.deleteButton}
-                            onClick={() => this.deleteRows(trip._id)}
-                          >
-                            Remove Trip
-                          </button>
-                        </a>
+                          </div>
+                        </div>
                       );
                     })}
                   </ul>

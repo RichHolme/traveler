@@ -14,7 +14,7 @@ const styles = {
   Navbar: {
     borderRadius: "0px",
     padding: "10px",
-    fontSize: "24px"
+    fontSize: "24px",
   },
   inspiration: {
     color: "White",
