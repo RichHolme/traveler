@@ -1,36 +1,39 @@
 import React, { Component } from "react";
-import Navtabs from "./NavtabsHome.js";
+import Navtabs from "../NavtabsHome.js";
 import { Link } from "react-router-dom";
+import style from "./style.css";
 
 class NewUser extends Component {
   state = {};
 
   styles = {
     form: {
-      marginTop: "80px",
+      marginTop: "3%",
       width: "500px",
       height: "200px",
       display: "inline-block"
     },
     body: {
       textAlign: "center",
-      // backgroundImage:
-        // "url(https://i.pinimg.com/originals/cc/a5/02/cca5022c86f67861746d7cf2eb486de8.gif)",
       backgroundSize: "cover",
       overflow: "hidden",
       height: "750px",
-      marginTop: "-75px",
+      // marginTop: "-75px",
       textAlign: "center",
       width: "100%",
-      fontSize: "20px"
-    },
-    text: {
-      textAlign: "left"
-    },
-    textSize: {
       fontSize: "20px",
-      // opacity: "10",
+    },
+    input: {
+      textAlign: "left",
+      opacity: "10"
+    },
+    button: {
+      opacity: "10",
       color: "white"
+    },
+    opacity: {
+      opacity: "10 !important",
+      backgroundColor: "#fbf8ee !important"
     }
   };
 
@@ -40,30 +43,33 @@ class NewUser extends Component {
         <Navtabs />
         <div style={this.styles.body}>
           <form style={this.styles.form}>
-            <div style={this.styles.text} class="form-group">
+            <div style={this.styles.input} class="form-group">
               <label for="exampleInputEmail1">User Name</label>
               <input
+                style={this.styles.opacity}
                 className="form-control"
                 aria-describedby="emailHelp"
                 placeholder="User Name"
               />
             </div>
-            <div style={this.styles.text} class="form-group">
+            <div style={this.styles.input} class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
+                style={this.styles.opacity}
                 type="email"
                 className="form-control"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
               />
-              <small className="form-text">
+              {/* <small className="form-text">
                 Don't worry, you're in good hands. Chances are we get hacked or
                 we sell your email to the highest bidder.
-              </small>
+              </small> */}
             </div>
-            <div style={this.styles.text} className="form-group">
+            <div style={this.styles.input} className="form-group">
               <label for="exampleInputPassword1">Password</label>
               <input
+                style={this.styles.opacity}
                 type="password"
                 className="form-control"
                 placeholder="Password"
@@ -71,7 +77,7 @@ class NewUser extends Component {
             </div>
             <Link to="/Profile">
               <button
-                style={this.styles.textSize}
+                style={this.styles.button}
                 type="submit"
                 className="btn btn-dark"
               >

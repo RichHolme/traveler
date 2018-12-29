@@ -4,7 +4,7 @@ import axios from "axios";
 import Cities from "./components/Cities";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn/SignIn";
-import NewUser from "./components/NewUser";
+import NewUser from "./components/NewUser/NewUser";
 import Trips from "./components/Trips/Trips";
 import CreateTrip from "./components/CreateTrip";
 import Navtabs from "./components/Navtabs";

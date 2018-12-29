@@ -9,7 +9,7 @@ const styles = {
     // height: "50px",
     fontSize: "28px",
     // width: "250px",
-    // opacity: "15",
+    opacity: "10",
     color: "white",
     width: "100%"
   },
@@ -29,7 +29,8 @@ const styles = {
   div:{
     margin: "auto",
     width: "500px",
-    textAlign: "center"
+    textAlign: "center",
+    marginTop: "10%"
   },
   container:{
     textAlign: "center"

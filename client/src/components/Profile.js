@@ -68,7 +68,7 @@ class Profile extends Component {
       // border: "1px solid black"
     },
     container: {
-      marginTop: "5%",
+      marginTop: "3%",
       paddingTop: "50px",
       paddingBottom: "50px",
       // paddingLeft: "200px",
