@@ -5,8 +5,8 @@ import {
   getEvents,
   getHotels,
   museum,
-  landmarks,
-  active,
+  // landmarks,
+  // active,
   weather
 } from "../utils/API";
 import CityJumbo from "./CityJumbo";
@@ -126,11 +126,6 @@ class Cities extends Component {
     restaurant(lat, lon)
       .then(data => {
         this.setState({ restaurantObj: data.data.results });
-        getEvents(lat, lon)
-          .then(data => {
-            this.setState({ eventObj: data.data.events.event });
-          })
-          .catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   };
@@ -147,16 +142,21 @@ class Cities extends Component {
     museum(lat, lon)
       .then(data => {
         this.setState({ museumObj: data.data.results });
-        landmarks(lat, lon)
+        // landmarks(lat, lon)
+        //   .then(data => {
+        //     this.setState({
+        //       landmarkObj: data.data.Response.View[0].Result
+        //     });
+        //     active(lat, lon)
+        //       .then(data => {
+        //         this.setState({ activeObj: data.data.results });
+        //       })
+        //       .catch(err => console.log(err));
+        //   })
+        //   .catch(err => console.log(err));
+        getEvents(lat, lon)
           .then(data => {
-            this.setState({
-              landmarkObj: data.data.Response.View[0].Result
-            });
-            active(lat, lon)
-              .then(data => {
-                this.setState({ activeObj: data.data.results });
-              })
-              .catch(err => console.log(err));
+            this.setState({ eventObj: data.data.events.event });
           })
           .catch(err => console.log(err));
       })
@@ -186,7 +186,7 @@ class Cities extends Component {
 
   renderSights = (museumObj, landmarkObj, activeObj) => {
     return (
-      <Sights museum={museumObj} landmark={landmarkObj} active={activeObj} />
+      <Sights museum={museumObj}/>
     );
   };
 
@@ -293,8 +293,9 @@ class Cities extends Component {
           {this.state.sightsClick ? (
             <Sights
               museum={this.state.museumObj}
-              landmark={this.state.landmarkObj}
-              active={this.state.activeObj}
+              // landmark={this.state.landmarkObj}
+              // active={this.state.activeObj}
+              events={this.state.eventObj}
             />
           ) : (
             " "

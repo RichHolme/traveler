@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Museums from "./Museums";
-import Landmarks from "./Landmarks";
-import Active from "./Active";
+// import Landmarks from "./Landmarks";
+// import Active from "./Active";
+import Event from "./Event";
+// import moment from "Moment.js";
+import moment from "moment";
 
 const Sights = props => {
   console.log(props);
@@ -39,61 +42,45 @@ const Sights = props => {
     );
   };
 
-  //A funciton to render landmarks found by the API to the page//
-  const renderLandmark = () => {
+  const renderEvent = () => {
     return (
       <div>
-        {props.landmark.slice(0, 8).map(landmark => {
-          return (
-            <Landmarks
-              name={landmark.Location.Name}
-              address={landmark.Location.Address.Label}
-              type={landmark.Location.LocationType}
-              lat={landmark.Location.DisplayPosition.Latitude}
-              lon={landmark.Location.DisplayPosition.Longitude}
-              key={landmark.Location.LocationId}
-              landmarkId={landmark.Location.LocationId}
-            />
-          );
-        })}
-      </div>
-    );
-  };
+        {props.events.map(event => {
+          let address;
+          let allDay;
+          let picture;
+          let stopTime;
 
-  const renderActive = () => {
-    return (
-      <div>
-        {props.active.slice(0, 8).map(act => {
-          //   console.log(act.assetDescriptions[0]);
-          //   console.log(act.assetDescriptions[0]);
-          let href;
-          act.assetDescriptions[0]
-            ? (href = act.assetDescriptions[0].description)
-            : (href = "No Description Provided");
+          address = `${event.venue_address} ${event.city_name}, ${
+            event.region_abbr
+          }`;
 
-          console.log(href);
-          //   const thisHref = href
-          //     ? href.match(/\".*\"/)[0].replace(/\"/g, "")
-          //     : null;
+          event.stop_time === null
+            ? (stopTime = "Whenever...")
+            : (stopTime = event.stop_time);
+
+          event.all_day === "0" && stopTime === "Whenever..."
+            ? (allDay = `${moment(event.start_time).format(
+                "MMMM Do YYYY, h:mm a"
+              )} - ${stopTime}`)
+            : event.all_day === "0" && stopTime !== "Whenever..."
+              ? (allDay = `${moment(event.start_time).format(
+                  "MMMM Do YYYY, h:mm a"
+                )} - ${moment(event.stop_time).format("MMMM Do YYYY, h:mm a")}`)
+              : event.all_day === "1"
+                ? (allDay = "All Day Event")
+                : (allDay = "No Time Specified");
+
           return (
-            <Active
-              description={href}
-              endDate={act.activityEndDate}
-              startDate={act.activityStartDate}
-              address={act.place.addressLine1Txt}
-              city={act.place.cityName}
-              state={act.place.stateProvinceCode}
-              country={act.place.countryCode}
-              zip={act.place.postalCode}
-              latLon={act.place.geoPoint}
-              tktsRemain={act.assetQuantity.availableCnt}
-              tktsSold={act.assetQuantity.soldCnt}
-              capacity={act.assetQuantity.capacityNb}
-              org={act.organization.organizationName}
-              name={act.assetName}
-              saleStatus={act.salesStatus}
-              key={act.assetGuid}
-              activeId={act.assetGuid}
+            <Event
+              address={address}
+              link={event.url}
+              time={allDay}
+              name={event.title}
+              description={event.description}
+              venueName={event.venue_name}
+              key={event.id}
+              eventId={event.id}
             />
           );
         })}
@@ -126,18 +113,18 @@ const Sights = props => {
         <li className="nav-item">
           <a
             className="nav-link"
-            id="landmark-tab"
+            id="event-tab"
             data-toggle="tab"
-            href="#landmark"
+            href="#event"
             role="tab"
-            aria-controls="landmark"
+            aria-controls="event"
             aria-selected="false"
-            onClick={() => renderLandmark()}
+            onClick={() => renderEvent()}
           >
-            Landmarks
+            <i className="far fa-calendar-alt" /> Events{" "}
           </a>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <a
             className="nav-link"
             id="active-tab"
@@ -150,7 +137,7 @@ const Sights = props => {
           >
             Be Active
           </a>
-        </li>
+        </li> */}
       </ul>
       <div className="tab-content" id="myTabContent">
         <div
@@ -164,14 +151,14 @@ const Sights = props => {
         </div>
         <div
           className="tab-pane fade"
-          id="landmark"
+          id="event"
           role="tabpanel"
-          aria-labelledby="landmark-tab"
+          aria-labelledby="event-tab"
         >
-          <h1 className="text-center">Landmarks to Snap Instagrams Of</h1>
-          {renderLandmark(props.landmark)}
+          <h1 className="text-center">Nightlife, Your Best Life</h1>
+          <div className="card-deck">{renderEvent(props.event)}</div>
         </div>
-        <div
+        {/* <div
           className="tab-pane fade"
           id="active"
           role="tabpanel"
@@ -179,7 +166,7 @@ const Sights = props => {
         >
           <h1 className="text-center">Stay Active</h1>
           {renderActive(props.active)}
-        </div>
+        </div> */}
       </div>
     </div>
   );

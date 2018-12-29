@@ -41,27 +41,28 @@ const museum = (lat, lon) => {
   );
 };
 
-const landmarks = (lat, lon) => {
-  return axios.get(
-    "https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=HCJBHeK2kmFy3ZdA2wv4&app_code=bT9W3jH2FDVF4ZHS3nHaIg&mode=retrieveLandmarks&prox=" +
-      lat +
-      "," +
-      lon +
-      ",1000"
-  );
-};
+// not using these anymore
+// const landmarks = (lat, lon) => {
+//   return axios.get(
+//     "https://reverse.geocoder.cit.api.here.com/6.2/reversegeocode.json?app_id=HCJBHeK2kmFy3ZdA2wv4&app_code=bT9W3jH2FDVF4ZHS3nHaIg&mode=retrieveLandmarks&prox=" +
+//       lat +
+//       "," +
+//       lon +
+//       ",1000"
+//   ).then(function(data){console.log('landmark data ------------------------')}).catch(function(err){console.log(err)})
+// }
 
-const active = (lat, lon) => {
-  return axios.get(
-    "https://cors-anywhere.herokuapp.com/http://api.amp.active.com/v2/search?start_date=" +
-      moment().format("YYYY-MM-DD") +
-      "&lat_lon=" +
-      lat +
-      "," +
-      lon +
-      "&api_key=femervwexgb28gepuw67s3x4"
-  );
-};
+// const active = (lat, lon) => {
+//   return axios.get(
+//     "https://cors-anywhere.herokuapp.com/http://api.amp.active.com/v2/search?start_date=" +
+//       moment().format("YYYY-MM-DD") +
+//       "&lat_lon=" +
+//       lat +
+//       "," +
+//       lon +
+//       "&api_key=femervwexgb28gepuw67s3x4"
+//   );
+// };
 
 const weather = query => {
   return axios.get(
@@ -71,4 +72,4 @@ const weather = query => {
   );
 };
 
-export { restaurant, getEvents, getHotels, museum, landmarks, active, weather };
+export { restaurant, getEvents, getHotels, museum, weather };
