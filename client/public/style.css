@@ -8,3 +8,12 @@ body {
   /* font-size: 18px !important; */
   
 }
+
+.icon{
+  height: 50px !important;
+  width: 50px !important;
+}
+
+.modalTxt{
+  text-align: center !important;
+}

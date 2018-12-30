@@ -174,6 +174,8 @@ class Hotels extends Component {
               className="btn addBtn"
               dataname={this.props.name}
               dataaddress={this.props.address}
+              data-toggle="modal" 
+              data-target="#hotelModal"
               // onClick={() =>
               //   // this.sendHotel(
               //   //   this.props.name,

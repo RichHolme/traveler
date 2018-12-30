@@ -156,6 +156,8 @@ class Event extends Component {
           type="button"
           style={styles.button}
           className="btn addBtn"
+          data-toggle="modal" 
+          data-target="#concertModal"
           onClick={() => this.sendEvent(this.props.name, this.props.address, this.props.eventId)}
         >
           Add to My Path

@@ -209,6 +209,8 @@ class Restaurant extends Component {
               type="button"
               className="btn addBtn"
               style={styles.button}
+              data-toggle="modal" 
+              data-target="#foodModal"
               onClick={() =>
                 this.sendRestaurant(
                   this.props.name,

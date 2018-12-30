@@ -196,6 +196,8 @@ class Museums extends Component {
               data-id={this.props.museumId}
               dataname={this.props.name}
               dataaddress={this.props.address}
+              data-toggle="modal" 
+              data-target="#museumModal"
               onClick={() => this.sendMuseum(this.props.name, this.props.address, this.props.museumId)}
             >
               Add to My Path
