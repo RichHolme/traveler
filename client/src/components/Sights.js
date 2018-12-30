@@ -107,7 +107,7 @@ const Sights = props => {
             aria-selected="true"
             onClick={() => renderMuseum()}
           >
-            Museums
+            <i className="fas fa-history" /> Museums
           </a>
         </li>
         <li className="nav-item">

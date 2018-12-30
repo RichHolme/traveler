@@ -10,7 +10,7 @@ import {
   weather
 } from "../utils/API";
 import CityJumbo from "./CityJumbo";
-import Hotels from "./Hotels";
+import HotelsTab from "./HotelsTab";
 import Navtabs from "./Navtabs";
 import Sights from "./Sights";
 import Nightlife from "./Nightlife";
@@ -195,28 +195,7 @@ class Cities extends Component {
 
   renderHotels = hotelObj => {
     return (
-      <div style={this.styles.scroll}>
-        {hotelObj.slice(0, 8).map(hotel => {
-          let href;
-          hotel.photos
-            ? (href = hotel.photos[0].html_attributions[0])
-            : "no photo";
-          const thisHref = href
-            ? href.match(/\".*\"/)[0].replace(/\"/g, "")
-            : null;
-          return (
-            <Hotels
-              icon={hotel.icon}
-              name={hotel.name}
-              address={hotel.vicinity}
-              rating={hotel.rating}
-              key={hotel.id}
-              hotelId={hotel.id}
-              photo={thisHref}
-            />
-          );
-        })}
-      </div>
+      <HotelsTab hotels={hotelObj}/>
     );
   };
 
@@ -277,7 +256,7 @@ class Cities extends Component {
             onClick={() => this.getDrinks(this.state.lat, this.state.lon)}
           >
             <div className="card-body">
-              <h3 className="card-title text-center">Eat, Drink, Do</h3>
+              <h3 className="card-title text-center">Eat & Drink</h3>
               <p className="card-text text-center">Live It Up Like a Local</p>
               <div style={this.styles.icon}>
                 <i className="fas fa-beer fa-5x"/>

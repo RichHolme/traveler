@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Restaurant from "./Restaurant";
-import moment from "moment";
+import Hotels from "./Hotels";
+// import moment from "moment";
 
-const Nightlife = props => {
+const HotlesTab = props => {
   const styles = {
     tabs: {
       fontSize: 20,
@@ -10,30 +10,26 @@ const Nightlife = props => {
     }
   };
 
-  const renderRestaurant = () => {
+  const renderHotels = hotelObj => {
     return (
       <div>
-        {props.restaurant.slice(0, 8).map(food => {
+        {hotelObj.slice(0, 8).map(hotel => {
           let href;
-          food.photos
-            ? (href = food.photos[0].html_attributions[0])
+          hotel.photos
+            ? (href = hotel.photos[0].html_attributions[0])
             : "no photo";
           const thisHref = href
             ? href.match(/\".*\"/)[0].replace(/\"/g, "")
             : null;
-
           return (
-            <Restaurant
-              name={food.name}
-              open={food.opening_hours.open_now}
-              icon={food.icon}
+            <Hotels
+              icon={hotel.icon}
+              name={hotel.name}
+              address={hotel.vicinity}
+              rating={hotel.rating}
+              key={hotel.id}
+              hotelId={hotel.id}
               photo={thisHref}
-              price={food.price_level}
-              rating={food.rating}
-              types={food.types}
-              address={food.vicinity}
-              key={food.id}
-              restaurantId={food.id}
             />
           );
         })}
@@ -52,28 +48,28 @@ const Nightlife = props => {
         <li className="nav-item active">
           <a
             className="nav-link"
-            id="restaurant-tab"
+            id="hotel-tab"
             data-toggle="tab"
-            href="#restaurant"
+            href="#hotel"
             role="tab"
-            aria-controls="restaurant"
+            aria-controls="hotel"
             aria-selected="true"
-            onClick={() => renderRestaurant()}
+            onClick={() => renderHotels()}
           >
-            <i className="fas fa-utensils" /> Food & Drink
-            <i className="fas fa-glass-martini" />
+            <i className="fas fa-battery-quarter" /> Lodging
+            {/* <i className="fas fa-glass-martini" /> */}
           </a>
         </li>
       </ul>
       <div className="tab-content" id="myTabContent">
         <div
           className="tab-pane fade show active"
-          id="restaurant"
+          id="hotel"
           role="tabpanel"
           aria-labelledby="restaurant-tab"
         >
-          <h1 className="text-center">Eat Well. Drink Better</h1>
-          {renderRestaurant(props.restaurant)}
+          <h1 className="text-center">Recharge Your Batteries</h1>
+          {renderHotels(props.hotels)}
         </div>
        
       </div>
@@ -81,4 +77,4 @@ const Nightlife = props => {
   );
 };
 
-export default Nightlife;
+export default HotlesTab;
