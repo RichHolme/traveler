@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 // import { OverlayTrigger, Popover } from "react-bootstrap";
 import $ from 'jquery';
-import DatePicker from 'react-date-picker';
-import TimePicker from 'react-time-picker';
-import moment from 'moment';
+// import DatePicker from 'react-date-picker';
+// import TimePicker from 'react-time-picker';
+// import moment from 'moment';
+import DateTimePicker from 'react-datetime-picker';
 
 let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId");
@@ -46,7 +47,12 @@ const styles = {
   },
   times: {
     textAlign: 'center',
+    margin: 'auto',
     marginBottom: "2%"
+  },
+  pickers: {
+    // fontSize: "20px"
+    paddingBottome: "1% !important"
   }
 
 };
@@ -63,7 +69,6 @@ class Hotels extends Component {
   state= {
     guests: [],
     date: new Date(),
-    time: '10:00'
   }
 
   componentDidMount(){
@@ -119,8 +124,6 @@ class Hotels extends Component {
 
   onChange = date => this.setState({ date })
 
-  onChangeTime = time => this.setState({ time })
-
   render() {
     return (
       <div className="container">
@@ -146,25 +149,13 @@ class Hotels extends Component {
             </div>
             <div className="card-body text-dark">
               <div className="row">
-                {/* <div className="col-md-4">
-                  <h3 className="card-title" style={styles.rating}>
-                    Rating:{" "}
-                    {this.props.rating ? this.props.rating : "None Provided"}
-                  </h3>
-                </div> */}
-                <div style={styles.times} className="offset-md-2 col-md-4">
-                  <h3 className="card-title">Arrival Date: {" "}</h3>
-                  {<DatePicker
+                <div style={styles.times} className="">
+                  <h3 className="card-title">Arrival Date/Time: {" "}</h3>
+                  <h4 style={styles.pickers}><DateTimePicker
+                    
                     onChange={this.onChange}
                     value={this.state.date}
-                  />}
-                </div>
-                <div style={styles.times} className="col-md-4">
-                  <h3 className="card-title">Arrival Time: {" "}</h3>
-                  {<TimePicker
-                    onChange={this.onChangeTime}
-                    value={this.state.time}
-                  />}
+                  /></h4>
                 </div>
               </div>              
               <p className="card-text text-left" style={styles.rating}>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { OverlayTrigger, Popover } from "react-bootstrap";
+// import { OverlayTrigger, Popover } from "react-bootstrap";
+import DateTimePicker from 'react-datetime-picker';
 let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId");
 
@@ -37,14 +38,14 @@ const styles = {
     height: "20px",
     width: "20px",
     borderRadius: "50%"
-  }
+  },
+  times: {
+    textAlign: 'center',
+    margin: 'auto',
+    marginBottom: "2%"
+  },
 };
 
-const popoverClick = (
-  <Popover id="popover-trigger-click">
-    Add this to your trip!.
-  </Popover>
-);
 
 class Restaurant extends Component {
 
@@ -54,7 +55,8 @@ class Restaurant extends Component {
     guest2: [],
     img2: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
     guest3: [],
-    img3: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg"
+    img3: "http://frs102.net/wp-content/uploads/2013/06/FRS-102-WHITE-SQUARE.jpg",
+    date: new Date(),
 
   }
 
@@ -162,6 +164,8 @@ class Restaurant extends Component {
       });
   };
 
+  onChange = date => this.setState({ date })
+
   render() {
     return (
       <div className="container">
@@ -186,16 +190,21 @@ class Restaurant extends Component {
               </div>
             </div>
             <div className="card-body text-dark">
-              <h3 className="card-title" style={styles.rating}>
-                Rating:{" "}
-                {this.props.rating ? this.props.rating : "None Provided"}
-              </h3>
+              <div className="row">
+                <div style={styles.times} className="">
+                  <h3 className="card-title">Arrival Date/Time: {" "}</h3>
+                  <h4 style={styles.pickers}><DateTimePicker
+                    
+                    onChange={this.onChange}
+                    value={this.state.date}
+                  /></h4>
+                </div>
+              </div> 
               <p className="card-text text-left" style={styles.rating}>
                 <img style={styles.img} src={this.state.img}></img> {this.state.guests} <img style={styles.img} src={this.state.img2}></img> {this.state.guest2} <img style={styles.img} src={this.state.img3}></img> {this.state.guest3}
 
               </p>
             </div>
-            <OverlayTrigger trigger={['hover', 'click']} placement="bottom" overlay={popoverClick}>
             <button
               type="button"
               className="btn addBtn"
@@ -210,7 +219,6 @@ class Restaurant extends Component {
             >
               Add to My Path
             </button>
-            </OverlayTrigger>
             {this.props.photo ? (
               <a href={this.props.photo} target="_blank" alt="hotelMap">
                 <button
