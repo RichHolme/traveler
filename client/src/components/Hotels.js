@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { OverlayTrigger, Popover } from "react-bootstrap";
+// import { OverlayTrigger, Popover } from "react-bootstrap";
+import $ from 'jquery';
+import DatePicker from 'react-date-picker';
+import TimePicker from 'react-time-picker';
+import moment from 'moment';
+
 let userId = localStorage.getItem("userId");
 let legId = localStorage.getItem("tripLegId");
 console.log("legId " + legId);
@@ -38,20 +43,27 @@ const styles = {
     height: "25px",
     width: "25px",
     borderRadius: "50%"
+  },
+  times: {
+    textAlign: 'center',
+    marginBottom: "2%"
   }
+
 };
 
-const popoverClick = (
-  <Popover id="popover-trigger-click">
-    Add this to your trip!.
-  </Popover>
-);
+// const popoverClick = (
+//   <Popover id="popover-trigger-click">
+//     Add this to your trip!.
+//   </Popover>
+// );
 
 
 class Hotels extends Component {
 
   state= {
-    guests: []
+    guests: [],
+    date: new Date(),
+    time: '10:00'
   }
 
   componentDidMount(){
@@ -105,6 +117,10 @@ class Hotels extends Component {
       });
   };
 
+  onChange = date => this.setState({ date })
+
+  onChangeTime = time => this.setState({ time })
+
   render() {
     return (
       <div className="container">
@@ -129,10 +145,28 @@ class Hotels extends Component {
               </div>
             </div>
             <div className="card-body text-dark">
-              <h3 className="card-title" style={styles.rating}>
-                Rating:{" "}
-                {this.props.rating ? this.props.rating : "None Provided"}
-              </h3>
+              <div className="row">
+                {/* <div className="col-md-4">
+                  <h3 className="card-title" style={styles.rating}>
+                    Rating:{" "}
+                    {this.props.rating ? this.props.rating : "None Provided"}
+                  </h3>
+                </div> */}
+                <div style={styles.times} className="offset-md-2 col-md-4">
+                  <h3 className="card-title">Arrival Date: {" "}</h3>
+                  {<DatePicker
+                    onChange={this.onChange}
+                    value={this.state.date}
+                  />}
+                </div>
+                <div style={styles.times} className="col-md-4">
+                  <h3 className="card-title">Arrival Time: {" "}</h3>
+                  {<TimePicker
+                    onChange={this.onChangeTime}
+                    value={this.state.time}
+                  />}
+                </div>
+              </div>              
               <p className="card-text text-left" style={styles.rating}>
                 {/* <img style={styles.img} src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg"></img> */}
                 {this.state.guests.map(guest => {
@@ -141,7 +175,7 @@ class Hotels extends Component {
                 )}
               </p>
             </div>
-            <OverlayTrigger trigger={['hover', 'click']} placement="bottom" overlay={popoverClick}>
+            {/* <OverlayTrigger trigger={['hover', 'click']} placement="bottom" overlay={popoverClick}> */}
             <button
               type="submit"
               data-id={this.props.hotelId}
@@ -149,18 +183,19 @@ class Hotels extends Component {
               className="btn addBtn"
               dataname={this.props.name}
               dataaddress={this.props.address}
-              onClick={() =>
-                this.sendHotel(
-                  this.props.name,
-                  this.props.address,
-                  this.props.hotelId
-                )
-              }
+              // onClick={() =>
+              //   // this.sendHotel(
+              //   //   this.props.name,
+              //   //   this.props.address,
+              //   //   this.props.hotelId
+              //   // )
+              //   this.showModal()
+              // }
               // {((e) => this.handleClick(e, data)) }
             >
               Add to My Path
             </button>
-            </OverlayTrigger>
+            {/* </OverlayTrigger> */}
             {this.props.photo ? (
               <a href={this.props.photo} target="_blank" alt="hotelMap">
                 <button
