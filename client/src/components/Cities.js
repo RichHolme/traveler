@@ -16,6 +16,8 @@ import Sights from "./Sights";
 import Nightlife from "./Nightlife";
 import Weather from "./Weather";
 import city from "../images/city.gif";
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import $ from 'jquery';
 
 class Cities extends Component {
   state = {
@@ -38,7 +40,7 @@ class Cities extends Component {
   styles = {
     card: {
       width: "maxWidth: 18rem",
-      height: "200px",
+      height: "225px",
       margin: "30px",
       boxShadow: "1px 3px 8px 1px #888888",
       borderRadius: "5px",
@@ -129,6 +131,11 @@ class Cities extends Component {
     restaurant(lat, lon)
       .then(data => {
         this.setState({ restaurantObj: data.data.results });
+        console.log('here to scroll')
+        // document.getElementByClassName('container').scrollIntoView();
+        $('html,body').animate({
+          scrollTop: $('.container').offset().top
+        }, 1000);
       })
       .catch(err => console.log(err));
   };
@@ -145,18 +152,10 @@ class Cities extends Component {
     museum(lat, lon)
       .then(data => {
         this.setState({ museumObj: data.data.results });
-        // landmarks(lat, lon)
-        //   .then(data => {
-        //     this.setState({
-        //       landmarkObj: data.data.Response.View[0].Result
-        //     });
-        //     active(lat, lon)
-        //       .then(data => {
-        //         this.setState({ activeObj: data.data.results });
-        //       })
-        //       .catch(err => console.log(err));
-        //   })
-        //   .catch(err => console.log(err));
+        $('html,body').animate({
+          scrollTop: $('.container').offset().top
+        }, 1000);
+
         getEvents(lat, lon)
           .then(data => {
             this.setState({ eventObj: data.data.events.event });
@@ -170,20 +169,25 @@ class Cities extends Component {
     document.getElementsByClassName("sightsDiv").innerHTML = "";
     document.getElementsByClassName("drinksDiv").innerHTML = "";
 
-    console.log("click worked");
+    // console.log("click worked");
     const lat = this.state.lat;
     const lon = this.state.lon;
-    console.log("Lat:  " + lat + "  Lon:  " + lon);
+    // console.log("Lat:  " + lat + "  Lon:  " + lon);
     this.setState({ hotelClick: true, sightsClick: false, drinksClick: false });
-    console.log(
-      "Hotels click:  " +
-        this.state.hotelClick +
-        "\nSights Click:  " +
-        this.state.sightsClick
-    );
+    // console.log(
+    //   "Hotels click:  " +
+    //     this.state.hotelClick +
+    //     "\nSights Click:  " +
+    //     this.state.sightsClick
+    // );
 
     getHotels(lat, lon)
-      .then(data => this.setState({ hotelObj: data.data.results }))
+      .then(data => {
+        this.setState({ hotelObj: data.data.results }) 
+        $('html,body').animate({
+          scrollTop: $('.container').offset().top
+        }, 1000)
+      })
       .catch(err => console.log(err));
   };
 
@@ -199,6 +203,12 @@ class Cities extends Component {
     );
   };
 
+  popoverClick = (
+    <Popover id="popover-trigger-click">
+      Back To Your Trip!
+    </Popover>
+  );
+
   render() {
     return (
       <div style={this.styles.container}>
@@ -212,7 +222,9 @@ class Cities extends Component {
         )} */}
         <div style={this.styles.h2}> Click a card below to get started! 
           <Link to="/Trips">
-            <span style={this.styles.span} className="fa fa-arrow-right" /> 
+            <OverlayTrigger trigger={['hover', 'click']} placement="top" overlay={this.popoverClick}>
+              <span style={this.styles.span} className="fa fa-arrow-right" /> 
+            </OverlayTrigger>
           </Link>
         </div>
   
