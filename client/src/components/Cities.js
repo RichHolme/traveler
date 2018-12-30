@@ -41,7 +41,8 @@ class Cities extends Component {
       height: "200px",
       margin: "30px",
       boxShadow: "1px 3px 8px 1px #888888",
-      borderRadius: "5px"
+      borderRadius: "5px",
+      cursor: 'pointer'
     },
     icon: {
       margin: "auto",
@@ -65,10 +66,12 @@ class Cities extends Component {
       fontSize: "18px"
     },
     h2: {
+      fontSize: "35px",
       textAlign: "center",
       marginTop: "5%",
       marginBottom: "3%",
-      marginRight: "-30px"
+      // marginRight: "-30px",
+      
     },
     city: {
       height: "100px !important", 
@@ -228,11 +231,11 @@ class Cities extends Component {
         ) : (
           ""
         )} */}
-        <h2 style={this.styles.h2}> Click a card below to get started! 
+        <div style={this.styles.h2}> Click a card below to get started! 
           <Link to="/Trips">
             <span style={this.styles.span} className="fa fa-arrow-right" /> 
           </Link>
-        </h2>
+        </div>
   
         <div className="row justify-content-center">
           {/* Hotel Card */}

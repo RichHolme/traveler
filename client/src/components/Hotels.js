@@ -108,6 +108,7 @@ class Hotels extends Component {
   render() {
     return (
       <div className="container">
+        
         <div className="row">
           <div
             className="card col-md-12 col-sm-12 col-xs-12"
