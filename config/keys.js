@@ -11,8 +11,8 @@ module.exports = {
   },
   googleAuth: {
     clientID:
-      "182270810559-lcme3get66u8l2rivhh3r6du7j25ome4.apps.googleusercontent.com",
-    clientSecret: "yPrInzMQwWRUixvQHO6RGz00",
+      "877978131575-6j6pei095jd03p666qlbjpa43nis0mc6.apps.googleusercontent.com",
+    clientSecret: "68DlCfLzxVO9kC5kGP3Cto3R",
     callbackURL: "https://trevelo.herokuapp.com/auth/google/callback"
   },
   session: {
