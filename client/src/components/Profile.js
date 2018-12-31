@@ -8,8 +8,8 @@ let userId = localStorage.getItem("userId");
 let username = localStorage.getItem("userName");
 let email = localStorage.getItem("email");
 let thumbnail = localStorage.getItem("thumbnail");
-thumbnail = thumbnail.slice(0, -2);
-thumbnail = thumbnail + "200";
+// thumbnail = thumbnail.slice(0, -2);
+// thumbnail = thumbnail + "200";
 
 class Profile extends Component {
   

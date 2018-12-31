@@ -56,9 +56,9 @@ mongoose.connect(
 require("./config/passport-setup")(passport);
 
 //create home route
-app.get("/", (req, res) => {
-  res.render("home", { user: req.user });
-});
+// app.get("/", (req, res) => {
+//   res.render("home", { user: req.user });
+// });
 
 app // Start the API server
   .listen(PORT, function() {
