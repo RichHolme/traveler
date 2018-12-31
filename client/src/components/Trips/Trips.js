@@ -51,10 +51,12 @@ class Trips extends Component {
   };
 
   render() {
+    $('html').css('background-image', 'url(./images/background.png)');
+    $('body').css('background-image', 'url(./images/background.png)');
     // console.log(this.trip);
     // $('body').attr()
-    $('body').css('background-image', 'url(#)');
-    $('html').css('background-image', 'url(#)');
+    // $('body').css('background-image', 'url(#)');
+    // $('html').css('background-image', 'url(#)');
     // $('#divID').css("background-image", "url(#)");  
     return (
       <div>
@@ -62,7 +64,7 @@ class Trips extends Component {
 
         <div className="container">
           <TripHeader name={this.state.trip.tripName} />
-          <Img />
+          {/* <Img /> */}
           {this.state.tripLegs.map(trip => {
             return (
               <div style={this.styles.border}>
@@ -73,7 +75,7 @@ class Trips extends Component {
                   legId={trip._id}
                 />
                 
-                <div id={trip.city.split(' ').join('')} className="hide">
+                <div id={trip.city.split(' ').join('')} className="hide scrollDiv">
                   <Headers />
 
                   <Row>

@@ -23,3 +23,15 @@ body {
 .hide{
   display: none;
 }
+
+.scrollDiv{
+  height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  background-color: #fbfbfb;
+  /* border: 1px solid black; */
+  padding: 2%;
+  border-radius: 10px;
+  margin-top: -10%;
+}
