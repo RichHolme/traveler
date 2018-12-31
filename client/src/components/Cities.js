@@ -87,6 +87,8 @@ class Cities extends Component {
 
   componentDidMount() {
     const city = this.props.match.params.city;
+    $('body').css('background-image', 'url(#)');
+    $('html').css('background-image', 'url(#)');
     weather(city)
       .then(data =>
         this.setState({ lat: data.data.coord.lat, lon: data.data.coord.lon })
