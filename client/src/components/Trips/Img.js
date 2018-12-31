@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import cityPicApi from "../../utils/cityPicApi";
+import city from "../../images/city.gif";
 // import Weather from "./Weather";
 
 class Img extends Component {
@@ -10,45 +11,53 @@ class Img extends Component {
 
   styles = {
     img: {
-        height: "300px",
+        height: "400px",
         width: "100%",
         img: "1px solid black",
         boxShadow: "1px 3px 8px 1px #888888",
-        marginTop: "10px",
-        marginBottom: "10px"
-      }
+        // marginTop: "10px",
+        marginBottom: "10px",
+        marginTop: "-2%",
+        // zIndex: '-1',
+        // position: "relative",
+        // top: '0'
+      },
+    p: {
+      position: 'absolute',
+      top: '0'
+    }
   };
 
   componentDidMount() {
-    const city = this.props.city;
-    console.log(city);
-    let cityLower = city.toLowerCase();
-    if (cityLower === "san francisco") {
-      cityLower = "san francisco bay area";
-    } else if (cityLower === "wasington, d.c.") {
-      cityLower = "washington d.c.";
-    }
-    const cityDashes = cityLower.replace(/\s+/g, "-");
+    // const city = this.props.city;
+    // console.log(city);
+    // let cityLower = city.toLowerCase();
+    // if (cityLower === "san francisco") {
+    //   cityLower = "san francisco bay area";
+    // } else if (cityLower === "wasington, d.c.") {
+    //   cityLower = "washington d.c.";
+    // }
+    // const cityDashes = cityLower.replace(/\s+/g, "-");
 
-    this.getCityPic(cityDashes);
+    // this.getCityPic(cityDashes);
   }
 
-  getCityPic = city => {
-    cityPicApi
-      .cityPic(city)
-      .then(
-        (data) => {
-          console.log(data)
-        if(data.data.photos.length){
-          this.setState({ cityPic: data.data.photos[0].image.web })
-        }else{
-        }
-      }
-        //  data => data ? this.setState({ cityPic: data.data.photos[0].image.web }) : this.setState({ cityPic: "https://ak3.picdn.net/shutterstock/videos/4757393/thumb/1.jpg"})
-      )
-      .then(console.log(this.state.cityPic))
-      .catch(err => console.log(err));
-  };
+  // getCityPic = city => {
+  //   cityPicApi
+  //     .cityPic(city)
+  //     .then(
+  //       (data) => {
+  //         console.log(data)
+  //       if(data.data.photos.length){
+  //         this.setState({ cityPic: data.data.photos[0].image.web })
+  //       }else{
+  //       }
+  //     }
+  //       //  data => data ? this.setState({ cityPic: data.data.photos[0].image.web }) : this.setState({ cityPic: "https://ak3.picdn.net/shutterstock/videos/4757393/thumb/1.jpg"})
+  //     )
+  //     .then(console.log(this.state.cityPic))
+  //     .catch(err => console.log(err));
+  // };
 
   render() {
     // const imgStyle = { backgroundImage: `url(${this.state.cityPic})` };
@@ -65,9 +74,12 @@ class Img extends Component {
         <div>
             <img
                 style={this.styles.img}
-                src={this.state.cityPic}
+                src={city}
             />
+
+            {/* <p style={this.styles.p}>Raleigh</p> */}
         </div>
+
     )
   }
 }

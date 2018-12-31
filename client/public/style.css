@@ -2,6 +2,8 @@ html,
 body {
   /* height: 100%; */
   /* background-image: url("./images/background.png"); */
+  /* background-image: no repeat; */
+  /* background-repeat: no-repeat; */
   /* overflow-y: hidden; */
   /* overflow-x: hidden !important; */
   background-color: #fbfbfb;
@@ -16,4 +18,8 @@ body {
 
 .modalTxt{
   text-align: center !important;
+}
+
+.hide{
+  display: none;
 }

@@ -32,6 +32,8 @@ class Trips extends Component {
           trip: response.data,
           tripLegs: response.data.tripLegs
         });
+
+        
       })
       .catch(function(error) {
         console.log("Error: " + error);
@@ -41,7 +43,10 @@ class Trips extends Component {
   styles = {
     border: {
       padding: "30px",
-      marginBottom: "40px"
+      paddingBottom: "0px"
+      // paddingRight: '30px',
+      // paddingLeft: '30px',
+      // marginBottom: "40px"
     }
   };
 
@@ -57,6 +62,7 @@ class Trips extends Component {
 
         <div className="container">
           <TripHeader name={this.state.trip.tripName} />
+          <Img />
           {this.state.tripLegs.map(trip => {
             return (
               <div style={this.styles.border}>
@@ -66,48 +72,50 @@ class Trips extends Component {
                   departure={trip.departureDate.slice(5, 10)}
                   legId={trip._id}
                 />
-                <Img city={trip.city} />
-                <Headers />
+                
+                <div id={trip.city.split(' ').join('')} className="hide">
+                  <Headers />
 
-                <Row>
-                  <Col>
-                    {trip.activity.map(event => {
-                      if (!event.restaurantBoolean) {
+                  <Row>
+                    <Col>
+                      {trip.activity.map(event => {
+                        if (!event.restaurantBoolean) {
+                          return (
+                            <Events
+                              name={event.name}
+                              // date={event.date}
+                              location={event.address}
+                            />
+                          );
+                        }
+                      })}
+                    </Col>
+                    <Col>
+                      {trip.shelter.map(hotel => {
                         return (
-                          <Events
-                            name={event.name}
-                            // date={event.date}
-                            location={event.address}
+                          <Hotels
+                            name={hotel.name}
+                            // date={hotel.date}
+                            location={hotel.address}
                           />
                         );
-                      }
-                    })}
-                  </Col>
-                  <Col>
-                    {trip.shelter.map(hotel => {
-                      return (
-                        <Hotels
-                          name={hotel.name}
-                          // date={hotel.date}
-                          location={hotel.address}
-                        />
-                      );
-                    })}
-                  </Col>
-                  <Col>
-                    {trip.activity.map(restaurant => {
-                      if (restaurant.restaurantBoolean) {
-                        return (
-                          <Restaurant
-                            name={restaurant.name}
-                            // date={restaurant.date}
-                            location={restaurant.address}
-                          />
-                        );
-                      }
-                    })}
-                  </Col>
-                </Row>
+                      })}
+                    </Col>
+                    <Col>
+                      {trip.activity.map(restaurant => {
+                        if (restaurant.restaurantBoolean) {
+                          return (
+                            <Restaurant
+                              name={restaurant.name}
+                              // date={restaurant.date}
+                              location={restaurant.address}
+                            />
+                          );
+                        }
+                      })}
+                    </Col>
+                  </Row>
+                </div>
               </div>
             );
           })}
