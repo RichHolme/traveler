@@ -14,7 +14,7 @@ const styles = {
     background: "black",
     borderRadius: "5px",
     padding: "10px",
-    boxShadow: "1px 3px 8px 1px #888888"
+    // boxShadow: "1px 3px 8px 1px #888888"
   },
   profileBtn: {
     border: "2px solid white",
