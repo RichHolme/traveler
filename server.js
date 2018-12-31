@@ -49,7 +49,7 @@ app.set("view engine", "ejs");
 mongoose.connect(
   database.mongodb.dbURI,
   () => {
-    console.log(dbURI);
+    // console.log(dbURI);
     console.log("connected to mongoDB");
   }
 );
