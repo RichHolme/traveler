@@ -138,9 +138,10 @@ router.get(
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
-router.get("/google/callback", passport.authenticate("google"), (req, res) => {
+router.get("auth/google/callback", passport.authenticate("google"), (req, res) => {
   //access the user on this req object
   // res.send(req.user);
+  // console.log('redirect to user')
   res.redirect("/Profile");
 });
 
